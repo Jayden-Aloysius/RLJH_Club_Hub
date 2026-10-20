@@ -208,7 +208,8 @@ def init_db():
             ]
             db.session.add_all(examples)
             db.session.commit()
+            
+init_db()
 
 if __name__ == "__main__":
-    init_db()
-    app.run(debug=True)
+    app.run(debug=False)
