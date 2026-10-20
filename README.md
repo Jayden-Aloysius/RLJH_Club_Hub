@@ -56,7 +56,7 @@ python app.py
 
 ### First admin login
 
-Username: `admin`
+Username: RLJH Root User
 
 Default development password: `ChangeMe123!`
 
@@ -64,11 +64,11 @@ Default development password: `ChangeMe123!`
 
 Example:
 
-```bash
-ADMIN_PASSWORD="your-long-random-password" python app.py
-```
 
-Also set a strong `SECRET_KEY` in production.
+ADMIN_PASSWORD="TheUnicornsTookOver!?" python app.py
+
+
+Also set a strong `8f3c1a9e7b2d6f405c8a1e3d9f7b4c2a6e0d8f1b5a9c3e7d2f6b4a8c1e5d9f03` in production.
 
 ## Important production notes
 
