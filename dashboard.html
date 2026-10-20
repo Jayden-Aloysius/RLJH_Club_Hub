@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Founder Dashboard{% endblock %}
+{% block content %}
+<div class="section-heading"><div><p class="eyebrow">FOUNDER DASHBOARD</p><h1>{{ club.name if club else "No club assigned" }}</h1></div></div>
+{% if club %}
+<div class="dashboard-actions">
+  <a class="button" href="{{ url_for('edit_club') }}">Customize club page</a>
+  <a class="button secondary" href="{{ url_for('club_page', slug=club.slug) }}">View public page</a>
+</div>
+<div class="content-card"><h2>What you can customize</h2><p>Update your club information, colours, images, and add a custom HTML section. Keep school privacy and safety rules in mind when adding content.</p></div>
+{% else %}
+<div class="content-card"><p>An administrator needs to assign your account to a club.</p></div>
+{% endif %}
+{% endblock %}

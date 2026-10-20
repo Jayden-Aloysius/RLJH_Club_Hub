@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Rocky Lake Club Hub{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">ROCKY LAKE JUNIOR HIGH</p>
+    <h1>Find your next club.</h1>
+    <p class="lead">One central place for students to discover what is happening around the school.</p>
+  </div>
+  <div class="hero-card"><strong>{{ clubs|length }}</strong><span>clubs</span></div>
+</section>
+
+<div class="section-heading">
+  <div><p class="eyebrow">EXPLORE</p><h2>All clubs</h2></div>
+  {% if role == "admin" %}<a class="button" href="{{ url_for('new_club') }}">+ Add club</a>{% endif %}
+</div>
+
+<section class="grid">
+{% for club in clubs %}
+  <a class="club-card" href="{{ url_for('club_page', slug=club.slug) }}" style="--accent: {{ club.accent }}">
+    {% if club.logo_url %}<img src="{{ club.logo_url }}" alt="" class="club-logo">{% else %}<div class="club-logo placeholder">★</div>{% endif %}
+    <div class="club-card-body">
+      <p class="eyebrow">CLUB</p>
+      <h3>{{ club.name }}</h3>
+      <p>{{ club.short_description }}</p>
+      <span class="learn">View club →</span>
+    </div>
+  </a>
+{% else %}
+  <p>No clubs have been added yet.</p>
+{% endfor %}
+</section>
+{% endblock %}

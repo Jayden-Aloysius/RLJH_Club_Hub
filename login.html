@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Login • Rocky Lake Club Hub{% endblock %}
+{% block content %}
+<div class="form-wrap">
+  <div class="content-card">
+    <p class="eyebrow">PRIVATE AREA</p>
+    <h1>Founder / Admin login</h1>
+    <p>Club founders can edit their club page after signing in.</p>
+    <form method="post">
+      <label>Username<input name="username" required autocomplete="username"></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password"></label>
+      <button class="button" type="submit">Sign in</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

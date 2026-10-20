@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}New Club{% endblock %}
+{% block content %}
+<div class="form-wrap"><div class="content-card"><p class="eyebrow">ADMIN</p><h1>Create a club</h1>
+<form method="post">
+<label>Club name<input name="name" required></label>
+<label>URL slug<input name="slug" placeholder="e.g. robotics-club" required></label>
+<label>Short description<input name="short_description" maxlength="300"></label>
+<button class="button">Create club</button>
+</form></div></div>
+{% endblock %}

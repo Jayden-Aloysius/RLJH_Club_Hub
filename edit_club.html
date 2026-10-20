@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ club.name }}{% endblock %}
+{% block content %}
+<div class="form-wrap wide">
+<div class="content-card">
+<p class="eyebrow">CUSTOMIZE</p><h1>{{ club.name }}</h1>
+<form method="post">
+<label>Club name<input name="name" value="{{ club.name }}" required></label>
+<label>URL slug<input name="slug" value="{{ club.slug }}" required></label>
+<label>Short description<input name="short_description" maxlength="300" value="{{ club.short_description }}"></label>
+<label>About the club<textarea name="description" rows="8">{{ club.description }}</textarea></label>
+<div class="two"><label>Meeting day<input name="meeting_day" value="{{ club.meeting_day }}"></label><label>Meeting time<input name="meeting_time" value="{{ club.meeting_time }}"></label></div>
+<label>Location<input name="location" value="{{ club.location }}"></label>
+<label>Public contact info<input name="contact" value="{{ club.contact }}" placeholder="Use a school-approved contact method"></label>
+<div class="two"><label>Logo image URL<input name="logo_url" value="{{ club.logo_url }}"></label><label>Banner image URL<input name="banner_url" value="{{ club.banner_url }}"></label></div>
+<label>Accent colour<input type="color" name="accent" value="{{ club.accent }}"></label>
+<label>Custom HTML section<textarea name="custom_html" rows="8" placeholder="Optional HTML for your club page">{{ club.custom_html }}</textarea></label>
+<label>Custom CSS<textarea name="custom_css" rows="10" placeholder="Optional CSS for your club page">{{ club.custom_css }}</textarea></label>
+{% if role == "admin" %}<label class="check"><input type="checkbox" name="published" {% if club.published %}checked{% endif %}> Published</label>{% endif %}
+<button class="button" type="submit">Save club page</button>
+</form>
+</div></div>
+{% endblock %}

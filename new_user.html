@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}New User{% endblock %}
+{% block content %}
+<div class="form-wrap"><div class="content-card"><p class="eyebrow">ADMIN</p><h1>Create account</h1>
+<form method="post">
+<label>Username<input name="username" required></label>
+<label>Password<input type="password" name="password" minlength="10" required></label>
+<label>Role<select name="role" id="role" onchange="toggleClub()"><option value="founder">Club founder</option><option value="admin">Administrator</option></select></label>
+<label id="clubField">Club<select name="club_id">{% for club in clubs %}<option value="{{ club.id }}">{{ club.name }}</option>{% endfor %}</select></label>
+<button class="button">Create account</button>
+</form>
+</div></div>
+<script>
+function toggleClub(){document.getElementById('clubField').style.display=document.getElementById('role').value==='founder'?'block':'none'} toggleClub();
+</script>
+{% endblock %}

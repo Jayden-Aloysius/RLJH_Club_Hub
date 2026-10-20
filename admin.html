@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Admin • Rocky Lake Club Hub{% endblock %}
+{% block content %}
+<div class="section-heading">
+<div><p class="eyebrow">ADMIN</p><h1>Control centre</h1><p>Manage clubs and accounts.</p></div>
+<div><a class="button" href="{{ url_for('new_club') }}">+ New club</a> <a class="button secondary" href="{{ url_for('new_user') }}">+ New user</a></div>
+</div>
+
+<div class="admin-grid">
+<section class="content-card">
+<h2>Clubs</h2>
+{% for club in clubs %}
+<div class="admin-row">
+  <div><b>{{ club.name }}</b><small>{{ "Published" if club.published else "Hidden" }}</small></div>
+  <div class="row-actions"><a href="{{ url_for('edit_club', club_id=club.id) }}">Edit</a><a href="{{ url_for('club_page', slug=club.slug) }}">View</a>
+  <form method="post" action="{{ url_for('delete_club', club_id=club.id) }}" onsubmit="return confirm('Delete this club and its founder accounts?')"><button class="link danger" type="submit">Delete</button></form></div>
+</div>
+{% endfor %}
+</section>
+<section class="content-card">
+<h2>Users</h2>
+{% for user in users %}
+<div class="admin-row">
+  <div><b>{{ user.username }}</b><small>{{ user.role }}{% if user.club %} • {{ user.club.name }}{% endif %}</small></div>
+  {% if user.id != session.get('user_id') %}
+  <form method="post" action="{{ url_for('delete_user', user_id=user.id) }}"><button class="link danger" type="submit">Delete</button></form>
+  {% endif %}
+</div>
+{% endfor %}
+</section>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ club.name }} • Rocky Lake Club Hub{% endblock %}
+{% block head %}
+<style>
+:root { --club-accent: {{ club.accent }}; }
+{% if club.custom_css %}{{ club.custom_css|safe }}{% endif %}
+</style>
+{% endblock %}
+{% block content %}
+<section class="club-hero" style="--accent: {{ club.accent }}; {% if club.banner_url %}background-image:linear-gradient(90deg, rgba(10,12,20,.88), rgba(10,12,20,.35)),url('{{ club.banner_url }}');{% endif %}">
+  <div>
+    <p class="eyebrow">ROCKY LAKE JUNIOR HIGH • CLUB</p>
+    <h1>{{ club.name }}</h1>
+    <p>{{ club.short_description }}</p>
+  </div>
+</section>
+
+<div class="club-layout">
+  <article class="content-card">
+    <h2>About the club</h2>
+    <div class="prose">{{ club.description|e|replace('\n','<br>')|safe }}</div>
+    {% if club.custom_html %}<div class="custom-area">{{ club.custom_html|safe }}</div>{% endif %}
+  </article>
+  <aside class="content-card details">
+    <h2>Meetings</h2>
+    <p><b>Day:</b> {{ club.meeting_day or "Not posted" }}</p>
+    <p><b>Time:</b> {{ club.meeting_time or "Not posted" }}</p>
+    <p><b>Location:</b> {{ club.location or "Not posted" }}</p>
+    {% if club.contact %}<p><b>Contact:</b> {{ club.contact }}</p>{% endif %}
+  </aside>
+</div>
+{% endblock %}
